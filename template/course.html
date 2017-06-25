@@ -1,0 +1,26 @@
+﻿<div class="container-fluid" ng-controller='SubjCtrl as vm'>
+    <section>
+        <div class="l-container-4" ng-repeat="predmet in vm.SpisokPredmetov | filter: {courseId: params.courseId}: true">
+            <h2>{{predmet.title}}</h2>
+            <br />
+            <!--<span ng-repeat="imgUrl in vm.rankedList | orderBy:'rank' | limitTo: 1">
+                <img ng-src="{{imgUrl.item}}" alt="{{predmet.subject}}" title="{{predmet.subject}}" width="200px" />
+            </span>-->
+            <!--Вывод соответствующего изображения, к выбранному предмету, через директиву 'loadImages'.-->
+            <span ng-repeat="imgUrl in vm.imgLink">
+                            <load-images
+                                    subject="predmet.subject"
+                                    index="$index"
+                                    url="imgUrl"
+                                    width="200"
+                            >
+                            </load-images>
+            </span>
+            <br /><br />
+            <p style="font-size: 16px;">{{predmet.description}}.</p>
+
+            <br />
+            <p class="sci-meta"><a href="#!">Назад к списку</a></p>
+        </div>
+    </section>
+</div>

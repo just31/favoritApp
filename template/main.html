@@ -1,0 +1,98 @@
+﻿<div class="container-fluid" ng-controller='SubjCtrl as vm'>
+    <section>
+        <div class="l-container-4">
+            <div class="courses u-mt-30">
+                <form class="courses-form form" id="filterform" role="form">
+                    <div>
+                        <select id="subj" name="subj" ng-model="subjFilter" ng-options="subj as subj.option for subj in vm.subj">
+                            <option value="" selected>Все предметы</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select id="genre" name="genre" ng-model="genreFilter" ng-options="genre as genre.option for genre in vm.genre">
+                            <option value="" selected>Все жанры</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select id="grade" name="grade" ng-model="gradeFilter" ng-options="grade as grade.option for grade in vm.grade">
+                            <option value="" selected>Все классы</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input class="borderFind" ng-model="search" type="text" placeholder="Поиск" id="search" name="search" list="character">
+                        <datalist id="character">
+                            <option value="Алгебра"></option>
+                            <option value="Английский язык"></option>
+                            <option value="Биология"></option>
+                            <option value="География"></option>
+                            <option value="Геометрия"></option>
+                            <option value="Демо-версия"></option>
+                            <option value="Естествознание"></option>
+                            <option value="Информатика"></option>
+                            <option value="История"></option>
+                            <option value="Математика"></option>
+                            <option value="Обществознание"></option>
+                            <option value="Окружающий мир"></option>
+                            <option value="Русский язык"></option>
+                            <option value="Физика"></option>
+                            <option value="Химия"></option>
+                        </datalist>
+                    </div>
+                </form>
+            </div>
+
+            <div class="toogle-price">
+                <h3>Выбор оплаты:</h3>
+
+                <div class="toogle-price-input">
+                    <input id="ch1" class="checkbox" type="checkbox" ng-model="checked" ng-init="checked=false" ng-disabled="checked2">
+                    <label for="ch1">в рублях</label>
+
+                    <input id="ch2" class="checkbox" type="checkbox" ng-model="checked2" ng-init="checked=false" ng-disabled="checked">
+                    <label for="ch2">в бонусах</label>
+                </div>
+            </div>
+
+            <h3 ng-if="subjFilter || genreFilter || gradeFilter || search" class="title-search">
+                {{vm.resultSearch}}:
+            </h3>
+
+            <main>
+                <ul class="courses-list" id="courseslist">
+
+                    <li class="courses-sci" ng-repeat="predmet in vm.SpisokPredmetov | filter:search | filter: {subject: subjFilter.option}: true | filter: {genre: genreFilter.option}: true | filter: {grade: gradeFilter.option}: true">
+                        <div class="sci-figure">
+                            <!--Вывод картинок к каждому предмету, через директиву 'loadImages'-->
+                            <span ng-repeat="imgUrl in vm.imgLink">
+                            <load-images
+                                    subject="predmet.subject"
+                                    index="$index"
+                                    url="imgUrl"
+                            >
+                            </load-images>
+                            </span>
+                            <div class="sci-figure-dl">
+                                <a href="#!course/{{predmet.courseId}}">Попробовать</a>
+                            </div>
+                        </div>
+                        <div class="sci-info">
+                            <p class="sci-title">{{predmet.subject}}</p>
+                            <p class="sci-grade">{{predmet.grade}} класс</p>
+                            <p class="sci-genre">{{predmet.genre}}</p>
+
+                            <p class="sci-meta"><a href="#!course/{{predmet.courseId}}">Подробнее</a></p>
+                            <p class="sci-controls">
+                                <a href="javascript:void(0);" class="pure-button pure-button-primary btn-fluid">
+                                    <span ng-if="!checked && !checked2">Купить за...</span>
+                                    <span ng-if="checked">Купить за {{predmet.price}} руб.</span>
+                                    <span ng-if="checked2">Купить за {{predmet.priceBonus}} баллов</span>
+                                </a>
+                            </p>
+
+                        </div>
+                    </li>
+                </ul>
+            </main>
+        </div>
+    </section>
+</div>

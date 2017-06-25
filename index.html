@@ -1,0 +1,66 @@
+﻿<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Favorit тестовое задание</title>
+    <!--If the adaptive design is not used-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+
+    <!--Bootstrap3-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!--Подключаем angular.js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <!--Подключаем angular-route-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+    <!--Подключаем файл с настройками angular.js-->
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-app='Subj'>
+
+<div class="container-fluid">
+    <div class="l-header">
+        <div class="header">
+            <header>
+                <a href="/" class="header-logo">
+                    <h1>Облако знаний</h1>
+                </a>
+            </header>
+            <nav>
+                <div class="header-nav">
+                    <a href="javascript:void(0);" class="header-link">Курсы</a>
+
+                    <a href="javascript:void(0);" class="header-btn header-btn-default">Регистрация</a>
+                    <a href="javascript:void(0);" class="header-btn header-btn-primary">Вход</a>
+                    <a class="header-cart" href="javascript:void(0);" title="Корзина">
+                        <span class="header-cart-count is-hidden">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div ng-view></div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
